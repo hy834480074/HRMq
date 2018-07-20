@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Area;
-import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -46,5 +45,4 @@ public interface AreaSercice {
      * @param pageSize
      * @return
      */
-    public PageInfo<Area> lookPageAll(int pageNum, int pageSize);
 }
