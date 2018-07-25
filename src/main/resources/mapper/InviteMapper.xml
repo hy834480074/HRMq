@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.InviteDao">
+
+    <insert id="registerInviteDao">
+        insert into invites(
+        invite_title,
+        invite_context,
+        department_id
+        )values(
+        #{inviteTitle},
+        #{inviteContext},
+        #{department.id}
+        )
+    </insert>
+
+    <select id="selectAllDao" resultType="Invite">
+        select
+			i.id id,
+			i.invite_title inviteTitle,
+			i.invite_context inviteContext,
+			d.department_name "department.departmentName",
+			p.position_name "position.positionName"
+			from
+			invites i,departments d,positions p
+			where
+			d.id=i.department_id
+			and
+			p.id=i.position_id
+    </select>
+</mapper>

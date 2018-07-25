@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.StaffDao">
+    <insert id="registerStaffDao">
+       insert into staffs(staff_account,staff_password,staff_offer)values(#{staffAccount},#{staffPassword},#{staffOffer})
+</insert>
+
+    <select id="checkAccountByAccountDao" resultType="Staff">
+        select * from staffs where staff_account=#{staffAccount}
+    </select>
+
+    <select id="checkAccount" resultType="Staff">
+        select * from staffs where staff_account=#{staffAccount} and staff_password=#{staffPassword}
+    </select>
+
+    <select id="checkAccountById" resultType="Staff">
+        select * from staffs where id=#{id}
+    </select>
+
+
+    <update id="updataStaffDao" parameterType="Staff">
+        update staffs set staff_password=#{staffPassword} where id=#{id}
+    </update>
+
+    <update id="updataStaffDaoByOffer" parameterType="Staff">
+        update staffs set staff_offer=#{staffOffer} where id=#{id}
+    </update>
+</mapper>

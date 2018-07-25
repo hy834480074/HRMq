@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ResumeDao">
+    <insert id="registerResumeDao">
+        insert into resumes(
+        resume_name,
+        resume_content,
+        resume_city,
+        resume_tel,
+        resume_email,
+        resume_face,
+        resum_experient,
+        resum_education,
+        staff_id,
+        resum_offer
+        )values(
+        #{resumeName},
+        #{resumeContent},
+        #{resumeCity},
+        #{resumeTel},
+        #{resumeEmail},
+        #{resumeFace},
+        #{resumExperient},
+        #{resumEducation},
+        #{staff.id},
+        #{resumOffer}
+        )
+    </insert>
+    <select id="selectAllResumeDao" resultType="Resume">
+        select * from resumes
+-- 			r.resume_name resumeName,
+-- 			r.resume_content inviteContext,
+-- 			r.resume_city resumeCity,
+-- 			r.resume_email resumeEmail,
+-- 			r.resume_face resumeFace,
+-- 			r.resum_experient resumExperient,
+-- 			r.resum_education resumEducation,
+    </select>
+
+    <select id="lookMeResumeDao" resultType="Resume">
+        select * from resumes where staff_id=#{staff.id}
+    </select>
+
+
+    <update id="registerXiuGaiResumeDao" parameterType="com.example.demo.entity.Resume">
+        update resumes
+        <set>
+            <if test="resumeName != null">
+                resume_name=#{resumeName},
+            </if>
+            <if test="resumeCity != null">
+                resume_city=#{resumeCity},
+            </if>
+            <if test="resumeTel != null">
+                resume_tel=#{resumeTel},
+            </if>
+            <if test="resumeEmail != null">
+                resume_email=#{resumeEmail},
+            </if>
+            <if test="resumeFace != null">
+                resume_face=#{resumeFace},
+            </if>
+            <if test="resumEducation != null">
+                resum_education=#{resumEducation},
+            </if>
+            <if test="resumExperient != null">
+                resum_experient=#{resumExperient}
+            </if>
+        </set>
+        where staff_id=#{staff.id}
+    </update>
+
+
+</mapper>

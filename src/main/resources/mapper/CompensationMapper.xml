@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.CompensationDao">
+
+    <select id="checkAccountByCompensationDao" resultType="Compensation">
+        select * from compensations where staff_id=#{staff.id}
+         and
+        compensation_date like "%"#{compensationDate}"%"
+
+    </select>
+
+    <select id="lookCompensationAllDao" resultType="Compensation">
+        select * from compensations
+    </select>
+
+
+    <update id="updateAccountByCompensationDao" parameterType="Compensation">
+        update compensations
+        <set>
+            <if test="compensationBasicBonus != null">
+                compensation_basic_bonus=#{compensationBasicBonus},
+            </if>
+            <if test="compensationPerformanceBonus != null">
+                compensation_performance_bonus=#{compensationPerformanceBonus},
+            </if>
+            <if test="compensationSpecialBonus != null">
+                compensation_special_bonus=#{compensationSpecialBonus},
+            </if>
+            <if test="compensationSocialSecurity != null">
+                compensation_social_security=#{compensationSocialSecurity},
+            </if>
+            <if test="compensationAll != null">
+                compensation_all=#{compensationAll}
+            </if>
+        </set>
+        where staff_id=#{staff.id}
+    </update>
+
+
+</mapper>

@@ -6,9 +6,7 @@ import com.example.demo.service.impl.AreaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,14 +18,14 @@ public class AreaController {
     @Autowired
     private AreaServiceImpl areaService;
 
-    @RequestMapping(value = "/listarea",method = RequestMethod.GET)
+    @RequestMapping(value = "/listarea",method = RequestMethod.POST)
     public String listArea(Model model){
         List<Area> list = areaService.getAreaList();
         model.addAttribute("lists",list);
-        return "lookAllArea";
+        return "forward:/look/login.jsp";
     }
 
-    @RequestMapping(value = "/getareabyid",method = RequestMethod.GET)
+    @RequestMapping(value = "/getareabyid",method = RequestMethod.POST)
     private Map<String,Object> getAreaByid(Integer areaId){
         Map<String,Object> modelMap = new HashMap<String,Object>();
         Area area = areaService.getAreaById(areaId);

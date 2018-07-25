@@ -31,14 +31,32 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+
+        <!--<dependency>-->
+            <!--<groupId>net.sourceforge.nekohtml</groupId>-->
+            <!--<artifactId>nekohtml</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--</dependency>-->
+        <!--发邮箱的好玩的东东-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
         <!--&lt;!&ndash;jqcss&ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>org.webjars</groupId>-->
             <!--<artifactId>jquery</artifactId>-->
             <!--<version>2.1.4</version>-->
         <!--</dependency>-->
-
-
+        <!--json语言-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
 
         <!--配置aop切面依赖-->
         <dependency>
